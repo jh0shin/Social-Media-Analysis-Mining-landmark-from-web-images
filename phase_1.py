@@ -47,36 +47,36 @@ print("End reading csv file")
 # meanshift clustering
 clustering = MeanShift(bandwidth=0.001, n_jobs=-2).fit(geoCoord)
 
-# # print(clustering.labels_)
-# print("End clustering")
+# print(clustering.labels_)
+print("End clustering")
 
-# # create directory for clustering picture
-# os.mkdir('./cluster')
+# create directory for clustering picture
+os.mkdir('./cluster')
 
-# # create file for save clustering result
-# f = open('./clustering_result.csv', 'w', encoding='UTF8', newline='')
-# reswriter = csv.writer(f)
+# create file for save clustering result
+f = open('./clustering_result.csv', 'w', encoding='UTF8', newline='')
+reswriter = csv.writer(f)
 
-# # if photo exists in photos, copy it to cluster/(cluster_num)
-# for index in range(len(geoCoord)):
-#     photoname = picInfo[index][0] + '.jpg'
+# if photo exists in photos, copy it to cluster/(cluster_num)
+for index in range(len(geoCoord)):
+    photoname = picInfo[index][0] + '.jpg'
 
-#     # write result
-#     reswriter.writerow([picInfo[index][0], clustering.labels_[index]])
+    # write result
+    reswriter.writerow([picInfo[index][0], clustering.labels_[index]])
 
-#     # filecopy if exists
-#     if photoname in photo_list:
-#         os.makedirs(                                        \
-#             './cluster/'+str(clustering.labels_[index]),    \
-#             exist_ok=True                                   \
-#         )
+    # filecopy if exists
+    if photoname in photo_list:
+        os.makedirs(                                        \
+            './cluster/'+str(clustering.labels_[index]),    \
+            exist_ok=True                                   \
+        )
 
-#         shutil.copyfile(                                                    \
-#             './photos/' + photoname,                                        \
-#             './cluster/'+str(clustering.labels_[index]) + '/' + photoname   \
-#         )
+        shutil.copyfile(                                                    \
+            './photos/' + photoname,                                        \
+            './cluster/'+str(clustering.labels_[index]) + '/' + photoname   \
+        )
 
-# f.close()
+f.close()
 
 # =====================================================
 #                Result visualization

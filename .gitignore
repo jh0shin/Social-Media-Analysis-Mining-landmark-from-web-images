@@ -1,5 +1,7 @@
 cluster/
 
+cluster_phase2/
+
 photos/
 
 /Photo.csv
@@ -9,5 +11,9 @@ photos/
 /tempCodeRunnerFile.py
 
 /phase_1.docx
+
+bundle/
+bundler-v0.3-binary/
+siftDemoV4/
 
 /~*
